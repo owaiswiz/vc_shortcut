@@ -5,6 +5,10 @@ module VcShortcut
         VcShortcut.define_render_shortcut
         VcShortcut.define_instantiate_shortcut
       end
+
+      config.to_prepare do
+        VcShortcut::ChainManager::TREE.clear
+      end
     end
 
   end

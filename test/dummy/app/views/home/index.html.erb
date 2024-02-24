@@ -1,2 +1,69 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div style="display:flex; column-gap: 40px;">
+  <div>
+    <h1>Standard rendering</h1>
+
+    <h3>Example</h3>
+    <%= render ExampleComponent.new %>
+
+    <h3>Namespaced</h3>
+    <%= render Namespaced::SomeOtherComponent.new(:test, 'another', key: :value) do |s| %>
+      <% s.with_a_slot do %>
+        A SLOT CONTENT
+      <% end %>
+      NORMAL CONTENT
+    <% end %>
+
+    <h3>Instance</h3>
+    <p><%= ExampleComponent.new.class.name %></p>
+    <p><%= Namespaced::SomeOtherComponent.new.class.name %></p>
+
+    <h3>Custom::Special</h3>
+    <%= Custom::Special::Component.new.class.name %>
+    <%= render Custom::Special::Component.new do %>
+      ----NORMAL CONTENT----
+    <% end %>
+
+    <h3>Error Handling</h3>
+    <p><%= ExampleComaponent.new.class.name rescue 'ERROR' %></p>
+    <p><%= Namespaaced::SomeOtherComponent.new rescue 'ERROR' %></p>
+    <p><%= Namespaced::SoameOtherComponent.new rescue 'ERROR' %></p>
+    <p><%= Namespaced.new rescue 'ERROR' %></p>
+  </div>
+
+  <div>
+    <h1>Shortcut rendering</h1>
+
+    <h3>Example</h3>
+    <%= vc.example %>
+
+    <h3>Namespaced</h3>
+    <%= vc.namespaced.some_other(:test, 'another', key: :value) do |s| %>
+      <% s.with_a_slot do %>
+        A SLOT CONTENT
+      <% end %>
+      NORMAL CONTENT
+    <% end %>
+
+    <h3>Instance</h3>
+    <p><%= vci.example.class.name %></p>
+    <p><%= vci.namespaced.some_other.class.name %></p>
+
+    <h3>Custom::Special</h3>
+    <%= vci.custom.special.class.name %>
+    <%= vc.custom.special do %>
+      ----NORMAL CONTENT----
+    <% end %>
+    <%= custom.special do %>
+      -- A SPECIAL HELPER --
+    <% end %>
+
+    <h3>Error Handling</h3>
+    <p><%= vci.exaample.class.name rescue 'ERROR' %></p>
+    <p><%= vci.namespaaced.some_other_component rescue 'ERROR' %></p>
+    <p><%= vci.namespaced.soame_other_component.new rescue 'ERROR' %></p>
+    <p><%= vci.namespaced.new rescue 'ERROR' %></p>
+    <p><%= vc.namespaced rescue 'ERROR' %></p>
+    <p><%= vc.namespaced.some_oth rescue 'ERROR' %></p>
+    <p><%= vc.eample rescue 'ERROR' %></p>
+  </div>
+</div>

@@ -34,7 +34,7 @@ module VcShortcut
       define_method(shortcut) do
         helpers.send(shortcut, self)
       end
-    end
+    end if defined?(ViewComponent::Base)
 
     helper_module
   end

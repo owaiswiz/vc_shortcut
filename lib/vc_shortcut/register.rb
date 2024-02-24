@@ -36,6 +36,12 @@ module VcShortcut
       end
     end if defined?(ViewComponent::Base)
 
+    Phlex::HTML.class_eval do
+      define_method(shortcut) do
+        helpers.send(shortcut, self)
+      end
+    end if defined?(Phlex::HTML)
+
     helper_module
   end
 end

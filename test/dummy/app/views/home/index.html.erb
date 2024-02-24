@@ -17,6 +17,13 @@
     <p><%= ExampleComponent.new.class.name %></p>
     <p><%= Namespaced::SomeOtherComponent.new.class.name %></p>
 
+    <h3>Phlex</h3>
+    <%= render ExamplePhlexComponent.new(name: 'test phlex') do %>
+      NORMAL CONTENT
+    <% end %>
+    <%= render NamespacedPhlex::SomeComponent.new %>
+    <%= NamespacedPhlex::SomeComponent.new.class.name %>
+
     <h3>Custom::Special</h3>
     <%= Custom::Special::Component.new.class.name %>
     <%= render Custom::Special::Component.new do %>
@@ -47,6 +54,13 @@
     <h3>Instance</h3>
     <p><%= vci.example.class.name %></p>
     <p><%= vci.namespaced.some_other.class.name %></p>
+
+    <h3>Phlex</h3>
+    <%= vc.example_phlex(name: 'test phlex') do %>
+      NORMAL CONTENT
+    <% end %>
+    <%= vc.namespaced_phlex.some %>
+    <%= vci.namespaced_phlex.some.class.name %>
 
     <h3>Custom::Special</h3>
     <%= vci.custom.special.class.name %>

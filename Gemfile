@@ -12,3 +12,5 @@ gem "sqlite3"
 # gem "debug", ">= 1.0.0"
 
 gem "view_component", "~> 3.11"
+
+gem "phlex-rails", "~> 1.1"

@@ -84,12 +84,15 @@ GEM
     base64 (0.2.0)
     bigdecimal (3.1.6)
     builder (3.2.4)
+    cgi (0.4.1)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.4)
     drb (2.2.0)
       ruby2_keywords
+    erb (4.0.4)
+      cgi (>= 0.3.3)
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -124,6 +127,14 @@ GEM
     nio4r (2.7.0)
     nokogiri (1.16.2-arm64-darwin)
       racc (~> 1.4)
+    phlex (1.9.0)
+      concurrent-ruby (~> 1.2)
+      erb (>= 4)
+      zeitwerk (~> 2.6)
+    phlex-rails (1.1.1)
+      phlex (~> 1.9)
+      railties (>= 6.1, < 8)
+      zeitwerk (~> 2.6)
     psych (5.1.2)
       stringio
     puma (6.4.2)
@@ -192,6 +203,7 @@ PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
+  phlex-rails (~> 1.1)
   puma
   sqlite3
   vc_shortcut!

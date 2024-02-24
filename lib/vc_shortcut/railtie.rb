@@ -13,7 +13,7 @@ module VcShortcut
     return unless VcShortcut.render_shortcut
 
     VcShortcut.register(VcShortcut.render_shortcut,
-      process: ->(context) { context.view_context.render(context.component.new(*context.call_args, **context.call_kwargs, &context.call_block)) }
+      process: ->(context) { context.view_context.render(context.component.new(*context.call_args, **context.call_kwargs), &context.call_block) }
     )
   end
 
@@ -22,7 +22,7 @@ module VcShortcut
     return unless VcShortcut.instantiate_shortcut
 
     VcShortcut.register(VcShortcut.instantiate_shortcut,
-      process: ->(context) { context.component.new(*context.call_args, **context.call_kwargs, &context.call_block) }
+      process: ->(context) { context.component.new(*context.call_args, **context.call_kwargs) }
     )
   end
 end

@@ -21,7 +21,7 @@ module VcShortcut
           @tree[method] = {}
         elsif result
           # We matched with a leaf
-          @tree[method] = component_klass
+          @tree[method] = result
         else
           raise NameError, "Cannot find a component or module matching. Chain: #{@context.chain.join('.')}"
         end
@@ -36,9 +36,9 @@ module VcShortcut
 
       # Otherwise, we are at the leaf node (i.e a component)
       @context.component = leaf_or_subtree
-      @context.call_args = arsg
+      @context.call_args = args
       @context.call_kwargs = kwargs
-      @context.block = block
+      @context.call_block = block
       @process.call(@context)
     end
   end

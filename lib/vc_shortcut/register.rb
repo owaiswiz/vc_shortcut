@@ -4,6 +4,10 @@ module VcShortcut
   # @param [Proc]   process           Proc to process what to do with the leaf component. E.g instantiating a new class or rendering a component.
   #                                   It's invoked with a single arguments: An instance of VcHelper::Context. See it's doc for what's available.
   #
+  # @param [Proc]   find_component    Proc to find the component class given the current camelized name
+  #                                   Lower level than find. If you supply find_component, you shouldn't supply find.
+  #                                   And vice-versa.
+  #
   # @param [Proc]   find              Proc to find the component class given the current chain
   #                                   Optional. If you don't pass it, we'll try to camelize the chain, and try finding a component or module.
   #                                   You might want to define this if you have got some custom lookup logic.
@@ -12,10 +16,12 @@ module VcShortcut
   #                                   If you return a non-nil value, we'll assume this is the leaf component.
   #                                   If you return nil, we'll assume we couldn't find any component for the given chain and raise an error
   #
-  def self.register(shortcut, process:, find: nil)
+  def self.register(shortcut, process:, find_component: nil, find: nil)
+    raise "You should only provide either find_component: or find:. Not both" if find_component && find
+    find_component ||= VcShortcut.find_component
     find ||= ->(context)  {
       chain_camelized = context.chain_camelized
-      component = VcShortcut.find_component.call(chain_camelized)
+      component = find_component.call(chain_camelized)
       next component if component
       :has_more if chain_camelized.safe_constantize
     }

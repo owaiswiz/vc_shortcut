@@ -71,11 +71,4 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
-
-  VcShortcut.register :custom, find: ->(context) {
-    chain_camelized = context.chain_camelized
-    component = "Custom::#{chain_camelized}::Component".safe_constantize
-    next component if component
-    :has_more if chain_camelized.safe_constantize
-  }, process: ->(context) { context.view_context.render(context.component.new(*context.call_args, **context.call_kwargs), &context.call_block) }
 end

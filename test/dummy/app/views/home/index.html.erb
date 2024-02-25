@@ -24,6 +24,11 @@
     <%= render NamespacedPhlex::SomeComponent.new %>
     <%= NamespacedPhlex::SomeComponent.new.class.name %>
 
+    <h3>UI::Admin::NavbarPrimitive</h3>
+    <%= render(Ui::Admin::NavbarPrimitive.new) do %>
+      NORMAL Content
+    <% end %>
+
     <h3>Custom::Special</h3>
     <%= Custom::Special::Component.new.class.name %>
     <%= render Custom::Special::Component.new do %>
@@ -61,6 +66,11 @@
     <% end %>
     <%= vc.namespaced_phlex.some %>
     <%= vci.namespaced_phlex.some.class.name %>
+
+    <h3>UI::Admin::NavbarPrimitive</h3>
+    <%= admin.navbar do %>
+      NORMAL Content
+    <% end %>
 
     <h3>Custom::Special</h3>
     <%= vci.custom.special.class.name %>

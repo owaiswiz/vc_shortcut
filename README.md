@@ -1,26 +1,18 @@
-# VcShortcut Gem
+# VcShortcut
 
-VcShortcut simplifies the API for rendering [ViewComponent](https://viewcomponent.org/)s and [Phlex](https://www.phlex.fun/) components in Ruby on Rails applications, reducing verbosity and streamlining component usage.
+VcShortcut simplifies the API for rendering [ViewComponent](https://viewcomponent.org/)s and [Phlex](https://www.phlex.fun/) components in Ruby on Rails applications, reducing verbosity.
 
 It also features caching for lookups, ensuring that it operates with minimal overhead and maximal speed.
 
 ```erb
 <%# Instead of: %>
 <%= render Admin::Dashboard::TabsComponent.new(style: :compact) do |tabs| %>
-  <% tabs.with_tab('Sales') { ... } %>
-  <% tabs.with_divider %>
-  <% tabs.with_tab('Settings') { ... } %>
+  ...
 <% end %>
-<%= render ButtonComponent.new('Sign up', '/sign_up') %>
-<%= render Wysiwyg::Toolbar::FontSelectComponent.new %>
 
 <%# You can now also do: %>
-<%= vc.button('Sign up', '/sign_up') %>
-<%= vc.wysiwyg.toolbar.font_select %>
 <%= vc.admin.dashboard.tabs(style: :compact) do |tabs| %>
-  <% tabs.with_tab('Sales') { ... } %>
-  <% tabs.with_divider %>
-  <% tabs.with_tab('Settings') { ... } %>
+  ...
 <% end %>
 ```
 

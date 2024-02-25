@@ -82,6 +82,7 @@ GEM
       mutex_m
       tzinfo (~> 2.0)
     base64 (0.2.0)
+    benchmark-ips (2.13.0)
     bigdecimal (3.1.6)
     builder (3.2.4)
     cgi (0.4.1)
@@ -203,6 +204,7 @@ PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
+  benchmark-ips
   phlex-rails (~> 1.1)
   puma
   sqlite3

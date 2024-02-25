@@ -14,3 +14,5 @@ gem "sqlite3"
 gem "view_component", "~> 3.11"
 
 gem "phlex-rails", "~> 1.1"
+
+gem 'benchmark-ips'

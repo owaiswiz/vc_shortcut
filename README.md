@@ -1,4 +1,5 @@
 # VcShortcut
+<a href="https://badge.fury.io/rb/vc_shortcut"><img src="https://badge.fury.io/rb/vc_shortcut.svg" alt="Gem Version" height="18"></a> <img alt="Gem Total Downloads" src="https://img.shields.io/gem/dt/vc_shortcut">
 
 VcShortcut simplifies the API for rendering [ViewComponent](https://viewcomponent.org/)s and [Phlex](https://www.phlex.fun/) components in Ruby on Rails applications, reducing verbosity.
 
